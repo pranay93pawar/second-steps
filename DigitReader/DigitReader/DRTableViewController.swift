@@ -12,6 +12,10 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
 
     var dparser:XMLParser = XMLParser()
     var showArts:[ShowArt] = []
+    var showTitle:String = String()
+    var showLink:String = String()
+    var eName:String = String()
+    
     
     
     override func viewDidLoad() {
@@ -106,14 +110,36 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         
+        eName = elementName
+        if elementName == "item" {
+            showTitle = String()
+            showLink = String()
+        }
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
+        
+        let data = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        
+        if !data.isEmpty {
+            if eName == "title" {
+                showTitle += data
+            } else if eName == "link" {
+                showLink += data
+            }
+        }
         
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
+        if elementName == "item" {
+            let showArt:ShowArt = ShowArt()
+            showArt.showTitle = showTitle
+            showArt.showLink = showLink
+            
+            showArts.append(showArt)
+        }
     }
     
     
