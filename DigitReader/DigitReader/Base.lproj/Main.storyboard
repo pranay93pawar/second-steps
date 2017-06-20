@@ -18,13 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="aL6-wl-bqt">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="aL6-wl-bqt">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aL6-wl-bqt" id="lOx-U3-qzj">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="6eT-8I-qNq" kind="show" identifier="viewpost" id="JkQ-OJ-NFy"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -37,6 +40,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ij-rB-PCu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="876" y="93.103448275862078"/>
+        </scene>
+        <!--Post View Controller-->
+        <scene sceneID="oNG-U1-yHJ">
+            <objects>
+                <viewController id="6eT-8I-qNq" customClass="PostViewController" customModule="DigitReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j6U-Gx-A1j"/>
+                        <viewControllerLayoutGuide type="bottom" id="uGL-nS-ZCH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="e1c-zT-X3n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ww7-In-WDI">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6eT-8I-qNq" id="emC-IX-66d"/>
+                                </connections>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="VUr-Ho-Tiw">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ww7-In-WDI" secondAttribute="trailing" id="9UZ-8S-vMM"/>
+                            <constraint firstItem="ww7-In-WDI" firstAttribute="top" secondItem="j6U-Gx-A1j" secondAttribute="bottom" id="Ry4-P3-TT5"/>
+                            <constraint firstAttribute="trailing" secondItem="VUr-Ho-Tiw" secondAttribute="trailing" id="aOz-hK-mla"/>
+                            <constraint firstItem="uGL-nS-ZCH" firstAttribute="top" secondItem="VUr-Ho-Tiw" secondAttribute="bottom" id="cgr-Rs-y2x"/>
+                            <constraint firstItem="VUr-Ho-Tiw" firstAttribute="leading" secondItem="e1c-zT-X3n" secondAttribute="leading" id="mRe-u5-JRP"/>
+                            <constraint firstItem="VUr-Ho-Tiw" firstAttribute="top" secondItem="j6U-Gx-A1j" secondAttribute="bottom" id="o72-f9-ztc"/>
+                            <constraint firstItem="uGL-nS-ZCH" firstAttribute="top" secondItem="ww7-In-WDI" secondAttribute="bottom" id="xx0-MP-fNp"/>
+                            <constraint firstItem="ww7-In-WDI" firstAttribute="leading" secondItem="e1c-zT-X3n" secondAttribute="leading" id="yXe-0l-DEO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="VUr-Ho-Tiw" id="GB6-vn-uIL"/>
+                        <outlet property="webView" destination="ww7-In-WDI" id="OeV-hL-uux"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bWb-bD-cze" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1746" y="93"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gap-Qr-d2c">

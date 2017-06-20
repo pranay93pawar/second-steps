@@ -14,6 +14,7 @@
 		9B435C441EF8430A006430F9 /* DigitReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B435C431EF8430A006430F9 /* DigitReaderTests.swift */; };
 		9B435C4F1EF84499006430F9 /* DRTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B435C4E1EF84499006430F9 /* DRTableViewController.swift */; };
 		9B435C511EF849D1006430F9 /* ShowArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B435C501EF849D1006430F9 /* ShowArt.swift */; };
+		9B83C2CE1EF97D4400B940DB /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B83C2CD1EF97D4400B940DB /* PostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		9B435C451EF8430A006430F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B435C4E1EF84499006430F9 /* DRTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRTableViewController.swift; sourceTree = "<group>"; };
 		9B435C501EF849D1006430F9 /* ShowArt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowArt.swift; sourceTree = "<group>"; };
+		9B83C2CD1EF97D4400B940DB /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				9B435C371EF8430A006430F9 /* LaunchScreen.storyboard */,
 				9B435C3A1EF8430A006430F9 /* Info.plist */,
 				9B435C501EF849D1006430F9 /* ShowArt.swift */,
+				9B83C2CD1EF97D4400B940DB /* PostViewController.swift */,
 			);
 			path = DigitReader;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B83C2CE1EF97D4400B940DB /* PostViewController.swift in Sources */,
 				9B435C511EF849D1006430F9 /* ShowArt.swift in Sources */,
 				9B435C2F1EF8430A006430F9 /* AppDelegate.swift in Sources */,
 				9B435C4F1EF84499006430F9 /* DRTableViewController.swift in Sources */,
@@ -417,6 +421,7 @@
 				9B435C4A1EF8430A006430F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9B435C4B1EF8430A006430F9 /* Build configuration list for PBXNativeTarget "DigitReaderTests" */ = {
 			isa = XCConfigurationList;
@@ -425,6 +430,7 @@
 				9B435C4D1EF8430A006430F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
