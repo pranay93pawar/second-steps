@@ -13,19 +13,68 @@
         <scene sceneID="d7F-n6-G4c">
             <objects>
                 <tableViewController id="vM9-HD-5TX" customClass="DRTableViewController" customModule="DigitReader" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sjl-Rv-fB9">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sjl-Rv-fB9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="aL6-wl-bqt">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DRTableViewCell" rowHeight="96" id="aL6-wl-bqt" customClass="DRTableViewCell" customModule="DigitReader" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="96"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aL6-wl-bqt" id="lOx-U3-qzj">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v9e-RN-DEM">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BA5-56-nnZ">
+                                                    <rect key="frame" x="10" y="8" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="NvF-Du-Xq8"/>
+                                                        <constraint firstAttribute="width" constant="80" id="bZW-G6-Bd4"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="iOb-tm-Uq9">
+                                                    <rect key="frame" x="100" y="10" width="265" height="76"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4J-Zk-Bq5">
+                                                            <rect key="frame" x="0.0" y="0.0" width="265" height="38"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDI-4g-mTL">
+                                                            <rect key="frame" x="0.0" y="38" width="265" height="38"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="BA5-56-nnZ" firstAttribute="leading" secondItem="v9e-RN-DEM" secondAttribute="leading" constant="10" id="1R2-He-rpG"/>
+                                                <constraint firstItem="iOb-tm-Uq9" firstAttribute="leading" secondItem="BA5-56-nnZ" secondAttribute="trailing" constant="10" id="4Xn-a9-cMz"/>
+                                                <constraint firstItem="BA5-56-nnZ" firstAttribute="centerY" secondItem="v9e-RN-DEM" secondAttribute="centerY" id="Xrn-ds-pcA"/>
+                                                <constraint firstItem="iOb-tm-Uq9" firstAttribute="top" secondItem="v9e-RN-DEM" secondAttribute="top" constant="10" id="cjk-FV-ZnR"/>
+                                                <constraint firstAttribute="trailing" secondItem="iOb-tm-Uq9" secondAttribute="trailing" constant="10" id="g8q-oV-kZy"/>
+                                                <constraint firstAttribute="bottom" secondItem="iOb-tm-Uq9" secondAttribute="bottom" constant="10" id="pET-aR-Mf4"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="v9e-RN-DEM" firstAttribute="top" secondItem="lOx-U3-qzj" secondAttribute="top" id="HCR-DU-FbK"/>
+                                        <constraint firstAttribute="trailing" secondItem="v9e-RN-DEM" secondAttribute="trailing" id="Vl7-HO-bzE"/>
+                                        <constraint firstAttribute="bottom" secondItem="v9e-RN-DEM" secondAttribute="bottom" id="i1a-OH-e9c"/>
+                                        <constraint firstItem="v9e-RN-DEM" firstAttribute="leading" secondItem="lOx-U3-qzj" secondAttribute="leading" id="yvk-Ye-fR3"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="showAuthor" destination="ZDI-4g-mTL" id="lBs-6o-qLX"/>
+                                    <outlet property="showImage" destination="BA5-56-nnZ" id="AQs-Wh-Qka"/>
+                                    <outlet property="showTitle" destination="L4J-Zk-Bq5" id="j9F-4a-w3b"/>
                                     <segue destination="6eT-8I-qNq" kind="show" identifier="viewpost" id="JkQ-OJ-NFy"/>
                                 </connections>
                             </tableViewCell>

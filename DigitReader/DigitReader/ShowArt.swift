@@ -11,6 +11,7 @@ import Foundation
 class ShowArt {
     var showTitle:String = String()
     var showLink:String = String()
-    
-    
+    var showAuthor:String = String()
+    var showImageURL:String = String()
+    var showDescription:String = String()
 }

@@ -15,14 +15,15 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
     var showTitle:String = String()
     var showLink:String = String()
     var eName:String = String()
-    
-    
+    var showAuthor:String = String()
+    var showImageURL:String = String()
+    var showDescription:String = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = true
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -55,11 +56,12 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell:DRTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DRTableViewCell", for: indexPath) as! DRTableViewCell
 
         let showArt:ShowArt = showArts[indexPath.row]
-        cell.textLabel?.text = showArt.showTitle
-
+        cell.showTitle.text = showArt.showTitle
+        //cell.showAuthor.text = showArt.showAuthor
+        cell.showAuthor.text = showArt.showDescription
         return cell
     }
     
@@ -124,9 +126,24 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         
         eName = elementName
-        if elementName == "item" {
+        
+        switch elementName {
+            
+        case "item":
             showTitle = String()
             showLink = String()
+            showAuthor = String()
+            showDescription = String()
+        case "media:thumbnail":
+            
+            if let urlString = attributeDict["url"] {
+                showImageURL = urlString
+            } else {
+                print("malformed element: media:thumbnail without url attribute")
+            }
+            
+        default:
+            break
         }
     }
     
@@ -139,6 +156,21 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
                 showTitle += data
             } else if eName == "link" {
                 showLink += data
+            } else if eName == "author" {
+                showAuthor += data
+            } else if eName == "description" {
+                
+                do {
+                    let regex:NSRegularExpression = try NSRegularExpression(pattern: "<.*?>", options: NSRegularExpression.Options.caseInsensitive)
+                    
+                    let range = NSMakeRange(0, data.characters.count)
+                    let description : String = regex.stringByReplacingMatches(in: data, options: [], range: range, withTemplate: "")
+                    
+                    showDescription += description
+                } catch {
+                    
+                }
+                
             }
         }
         
@@ -150,8 +182,13 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
             let showArt:ShowArt = ShowArt()
             showArt.showTitle = showTitle
             showArt.showLink = showLink
+            showArt.showAuthor = showAuthor
+            showArt.showDescription = showDescription
             
             showArts.append(showArt)
+        } else if elementName == "media:thumbnail" {
+            
+            showArts.last?.showImageURL = showImageURL
         }
     }
     
