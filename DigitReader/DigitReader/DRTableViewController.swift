@@ -10,6 +10,7 @@ import UIKit
 
 class DRTableViewController: UITableViewController,XMLParserDelegate {
 
+    var activityIndicator: UIActivityIndicatorView!
     var dparser:XMLParser = XMLParser()
     var showArts:[ShowArt] = []
     var showTitle:String = String()
@@ -30,13 +31,25 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
         
         self.title = "Digit"
         
+        
+        activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(activityIndicator)
+        
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        
         let url:URL = URL(string: "https://feeds.feedburner.com/digit/latest-news")!
         dparser = XMLParser(contentsOf: url)!
         dparser.delegate = self
         dparser.parse()
         
+        self.tableView.reloadData()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -57,11 +70,14 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:DRTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DRTableViewCell", for: indexPath) as! DRTableViewCell
-
+        
         let showArt:ShowArt = showArts[indexPath.row]
         cell.showTitle.text = showArt.showTitle
-        //cell.showAuthor.text = showArt.showAuthor
-        cell.showAuthor.text = showArt.showDescription
+        
+        let results = showArt.showAuthor.range(of: "\\((.*?)\\)",options: .regularExpression)
+        let showAuthor : String = showArt.showAuthor.substring(with: results!)
+        cell.showAuthor.text = " - " + showAuthor.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
+        
         return cell
     }
     
@@ -192,6 +208,13 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
         }
     }
     
+    func parserDidStartDocument(_ parser: XMLParser) {
+        activityIndicator.startAnimating()
+    }
     
+    func parserDidEndDocument(_ parser: XMLParser) {
+        activityIndicator.stopAnimating()
+        activityIndicator.hidesWhenStopped = true
+    }
     
 }
