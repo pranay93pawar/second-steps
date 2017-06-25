@@ -19,6 +19,8 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
     var showAuthor:String = String()
     var showImageURL:String = String()
     var showDescription:String = String()
+    let imageCache = NSCache<NSString,UIImage>()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +49,6 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
         dparser.delegate = self
         dparser.parse()
         
-        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,6 +79,7 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
         let showAuthor : String = showArt.showAuthor.substring(with: results!)
         cell.showAuthor.text = " - " + showAuthor.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
         
+        cell.showImage.downloadImage(from: showArt.showImageURL)        
         return cell
     }
     
@@ -200,11 +202,11 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
             showArt.showLink = showLink
             showArt.showAuthor = showAuthor
             showArt.showDescription = showDescription
-            
+            showArt.showImageURL = showImageURL
             showArts.append(showArt)
         } else if elementName == "media:thumbnail" {
             
-            showArts.last?.showImageURL = showImageURL
+            //showArts.first?.showImageURL = showImageURL
         }
     }
     
@@ -215,6 +217,8 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
     func parserDidEndDocument(_ parser: XMLParser) {
         activityIndicator.stopAnimating()
         activityIndicator.hidesWhenStopped = true
+        
+        self.tableView.reloadData()
     }
     
 }

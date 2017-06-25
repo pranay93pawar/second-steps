@@ -16,6 +16,7 @@
 		9B435C511EF849D1006430F9 /* ShowArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B435C501EF849D1006430F9 /* ShowArt.swift */; };
 		9B83C2CE1EF97D4400B940DB /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B83C2CD1EF97D4400B940DB /* PostViewController.swift */; };
 		9B896B561EFAC3550010CB09 /* DRTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B896B551EFAC3550010CB09 /* DRTableViewCell.swift */; };
+		9BA09E6D1F00033600C5976A /* UIImageView+Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA09E6C1F00033600C5976A /* UIImageView+Download.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		9B435C501EF849D1006430F9 /* ShowArt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowArt.swift; sourceTree = "<group>"; };
 		9B83C2CD1EF97D4400B940DB /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		9B896B551EFAC3550010CB09 /* DRTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRTableViewCell.swift; sourceTree = "<group>"; };
+		9BA09E6C1F00033600C5976A /* UIImageView+Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Download.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				9B435C501EF849D1006430F9 /* ShowArt.swift */,
 				9B83C2CD1EF97D4400B940DB /* PostViewController.swift */,
 				9B896B551EFAC3550010CB09 /* DRTableViewCell.swift */,
+				9BA09E6C1F00033600C5976A /* UIImageView+Download.swift */,
 			);
 			path = DigitReader;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BA09E6D1F00033600C5976A /* UIImageView+Download.swift in Sources */,
 				9B896B561EFAC3550010CB09 /* DRTableViewCell.swift in Sources */,
 				9B83C2CE1EF97D4400B940DB /* PostViewController.swift in Sources */,
 				9B435C511EF849D1006430F9 /* ShowArt.swift in Sources */,
