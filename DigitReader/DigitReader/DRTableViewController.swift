@@ -20,7 +20,8 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
     var showImageURL:String = String()
     var showDescription:String = String()
     let imageCache = NSCache<NSString,UIImage>()
-    
+    var feedItems:[FeedItem] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,17 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         
+        CoreDataManager.sharedInstance.getDigitFeedFromDatabase(success: { (feedItemsFromDB) in
+            
+            feedItems = feedItemsFromDB
+            
+            self.tableView.reloadData()
+            
+        }, failure: { (String) in
+            
+        })
+        
+        
         let url:URL = URL(string: "https://feeds.feedburner.com/digit/latest-news")!
         dparser = XMLParser(contentsOf: url)!
         dparser.delegate = self
@@ -65,21 +77,23 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return showArts.count
+        return feedItems.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:DRTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DRTableViewCell", for: indexPath) as! DRTableViewCell
         
-        let showArt:ShowArt = showArts[indexPath.row]
-        cell.showTitle.text = showArt.showTitle
+        let feedItem:FeedItem = feedItems[indexPath.row]
         
-        let results = showArt.showAuthor.range(of: "\\((.*?)\\)",options: .regularExpression)
-        let showAuthor : String = showArt.showAuthor.substring(with: results!)
+        cell.showTitle.text = feedItem.title
+        
+        let results = feedItem.author?.range(of: "\\((.*?)\\)",options: .regularExpression)
+        let showAuthor : String = feedItem.author!.substring(with: results!)
         cell.showAuthor.text = " - " + showAuthor.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
         
-        cell.showImage.downloadImage(from: showArt.showImageURL)        
+        cell.showImage.downloadImage(from: feedItem.imageURL!) 
+        
         return cell
     }
     
@@ -129,11 +143,12 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
         
         if segue.identifier == "viewpost" {
             
-            let showArt:ShowArt = showArts[(tableView.indexPathForSelectedRow?.row)!]
+            
+            let feedItem:FeedItem = feedItems[(tableView.indexPathForSelectedRow?.row)!]
             
             let viewController = segue.destination as! PostViewController
             
-            viewController.showLink = showArt.showLink
+            viewController.showLink = feedItem.link!
             
             
         }
@@ -218,7 +233,22 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
         activityIndicator.stopAnimating()
         activityIndicator.hidesWhenStopped = true
         
-        self.tableView.reloadData()
+        CoreDataManager.sharedInstance.saveDigitFeedToDatabase(feedItems: showArts, success: { (String) in
+            
+            CoreDataManager.sharedInstance.getDigitFeedFromDatabase(success: { (feedItemsFromDB) in
+                
+                feedItems = feedItemsFromDB
+                
+                self.tableView.reloadData()
+                
+            }, failure: { (String) in
+                
+            })
+            
+        }, failure: { (String) in
+            
+        })
+        
     }
     
 }
