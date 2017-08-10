@@ -33,6 +33,7 @@ class CoreDataManager  {
                 feedItemEntity.author = feedItem.showAuthor
                 feedItemEntity.link = feedItem.showLink
                 feedItemEntity.imageURL = feedItem.showImageURL
+                feedItemEntity.date = feedItem.showDate
                 
             }
             

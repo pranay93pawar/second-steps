@@ -14,4 +14,5 @@ class ShowArt {
     var showAuthor:String = String()
     var showImageURL:String = String()
     var showDescription:String = String()
+    var showDate:Int64 = 0
 }

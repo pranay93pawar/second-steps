@@ -13,6 +13,8 @@ class DRTableViewCell: UITableViewCell {
     @IBOutlet weak var showImage: UIImageView!
     @IBOutlet weak var showTitle: UILabel!
     @IBOutlet weak var showAuthor: UILabel!
+    @IBOutlet weak var showDate: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

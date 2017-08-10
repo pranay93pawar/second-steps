@@ -164,7 +164,7 @@
 				TargetAttributes = {
 					9B435C2A1EF8430A006430F9 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 4RP94D5ER2;
+						DevelopmentTeam = M65MBW7XAC;
 						ProvisioningStyle = Automatic;
 					};
 					9B435C3E1EF8430A006430F9 = {
@@ -365,7 +365,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4RP94D5ER2;
+				DEVELOPMENT_TEAM = M65MBW7XAC;
 				INFOPLIST_FILE = DigitReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pawar.DigitReader;
@@ -380,7 +380,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4RP94D5ER2;
+				DEVELOPMENT_TEAM = M65MBW7XAC;
 				INFOPLIST_FILE = DigitReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pawar.DigitReader;

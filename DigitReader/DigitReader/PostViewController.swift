@@ -15,10 +15,14 @@ class PostViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var webView: UIWebView!
     
     var showLink:String = String()
+    var itemTitle: String = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = itemTitle
+        
         let url:URL = URL(string: showLink)!
         let request:URLRequest = URLRequest(url: url)
         webView.loadRequest(request)

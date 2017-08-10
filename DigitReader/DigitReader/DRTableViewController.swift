@@ -21,7 +21,7 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
     var showDescription:String = String()
     let imageCache = NSCache<NSString,UIImage>()
     var feedItems:[FeedItem] = []
-
+    var showDate:Int64 = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,9 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
         
         CoreDataManager.sharedInstance.getDigitFeedFromDatabase(success: { (feedItemsFromDB) in
             
-            feedItems = feedItemsFromDB
+            feedItems.removeAll()
+            
+            feedItems = feedItemsFromDB.sorted(by: {$0.date > $1.date})
             
             self.tableView.reloadData()
             
@@ -87,6 +89,16 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
         let feedItem:FeedItem = feedItems[indexPath.row]
         
         cell.showTitle.text = feedItem.title
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd"
+        
+        
+        let pubDate = Date(timeIntervalSince1970: TimeInterval(feedItem.date))
+        
+        let displayDate = dateFormatter.string(from: pubDate)
+        
+        cell.showDate.text = displayDate.description
         
         let results = feedItem.author?.range(of: "\\((.*?)\\)",options: .regularExpression)
         let showAuthor : String = feedItem.author!.substring(with: results!)
@@ -149,7 +161,7 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
             let viewController = segue.destination as! PostViewController
             
             viewController.showLink = feedItem.link!
-            
+            viewController.itemTitle = feedItem.title!
             
         }
     }
@@ -204,6 +216,15 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
                     
                 }
                 
+            } else if eName == "pubDate" {
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                let dateString = data
+                
+                let date = dateFormatter.date(from: dateString)
+                showDate = Int64((date?.timeIntervalSince1970)!)
             }
         }
         
@@ -218,6 +239,7 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
             showArt.showAuthor = showAuthor
             showArt.showDescription = showDescription
             showArt.showImageURL = showImageURL
+            showArt.showDate = showDate
             showArts.append(showArt)
         } else if elementName == "media:thumbnail" {
             
@@ -237,7 +259,9 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
             
             CoreDataManager.sharedInstance.getDigitFeedFromDatabase(success: { (feedItemsFromDB) in
                 
-                feedItems = feedItemsFromDB
+                feedItems.removeAll()
+                
+                feedItems = feedItemsFromDB.sorted(by: {$0.date > $1.date})
                 
                 self.tableView.reloadData()
                 
