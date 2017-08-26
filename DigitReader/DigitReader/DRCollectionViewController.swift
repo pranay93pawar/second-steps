@@ -10,7 +10,7 @@ import UIKit
 
 class DRCollectionViewController: UICollectionViewController {
 
-    private let reuseIdentifier = "DRCollectionViewCell"
+    private let reuseIdentifier = "CollectionViewCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     fileprivate let itemsPerRow: CGFloat = 2
     var feedItems:[FeedItem] = []
@@ -22,7 +22,7 @@ class DRCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+       // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -72,12 +72,15 @@ class DRCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell:DRCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "DRCollectionViewCell", for: indexPath) as! DRCollectionViewCell
+        //let cell:DRCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DRCollectionViewCell
+        let cell:DRCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DRCollectionViewCell
     
         cell.backgroundColor = UIColor.white
         
         let feedItem:FeedItem = feedItems[indexPath.row]
         
+        
+        cell.showTitle.text = feedItem.title
         cell.showImage.downloadImage(from: feedItem.imageURL!)
     
         return cell

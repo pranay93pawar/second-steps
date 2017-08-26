@@ -158,44 +158,53 @@
         <scene sceneID="e3c-rS-8zq">
             <objects>
                 <collectionViewController storyboardIdentifier="DRCollectionViewController" id="nsD-U2-ZL9" customClass="DRCollectionViewController" customModule="DigitReader" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="O4g-Uk-jNs">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="O4g-Uk-jNs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MZX-gR-QLm">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="MZX-gR-QLm">
                             <size key="itemSize" width="200" height="200"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DRCollectionViewCell" id="v2X-hb-JWK" customClass="DRCollectionViewCell" customModule="DigitReader" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CollectionViewCell" reuseIdentifier="CollectionViewCell" id="v2X-hb-JWK" customClass="DRCollectionViewCell" customModule="DigitReader" customModuleProvider="target">
+                                <rect key="frame" x="88" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u3J-HR-S2R">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ngJ-fa-EGH">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeB-sa-qIN">
+                                            <rect key="frame" x="20" y="180" width="160" height="0.0"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="u3J-HR-S2R" firstAttribute="top" secondItem="v2X-hb-JWK" secondAttribute="top" id="BhT-Pl-Nxe"/>
-                                    <constraint firstItem="u3J-HR-S2R" firstAttribute="leading" secondItem="v2X-hb-JWK" secondAttribute="leading" id="Tqw-K6-M6H"/>
-                                    <constraint firstAttribute="trailing" secondItem="u3J-HR-S2R" secondAttribute="trailing" id="XCV-lL-eXE"/>
-                                    <constraint firstAttribute="bottom" secondItem="u3J-HR-S2R" secondAttribute="bottom" id="iAd-e1-ZzU"/>
+                                    <constraint firstAttribute="trailing" secondItem="xeB-sa-qIN" secondAttribute="trailing" constant="20" id="DXi-10-UIz"/>
+                                    <constraint firstItem="xeB-sa-qIN" firstAttribute="leading" secondItem="v2X-hb-JWK" secondAttribute="leading" constant="20" id="FW6-h4-eDq"/>
+                                    <constraint firstAttribute="trailing" secondItem="ngJ-fa-EGH" secondAttribute="trailing" id="Ok0-0F-BPj"/>
+                                    <constraint firstItem="ngJ-fa-EGH" firstAttribute="top" secondItem="v2X-hb-JWK" secondAttribute="top" id="Zng-7D-a8D"/>
+                                    <constraint firstAttribute="bottom" secondItem="ngJ-fa-EGH" secondAttribute="bottom" id="pg1-HY-vRq"/>
+                                    <constraint firstItem="ngJ-fa-EGH" firstAttribute="leading" secondItem="v2X-hb-JWK" secondAttribute="leading" id="tYC-bS-mWz"/>
+                                    <constraint firstAttribute="bottom" secondItem="xeB-sa-qIN" secondAttribute="bottom" constant="20" id="weo-zW-K4q"/>
                                 </constraints>
-                                <size key="customSize" width="100" height="100"/>
                                 <connections>
-                                    <outlet property="showImage" destination="u3J-HR-S2R" id="Q6U-1f-6Sr"/>
+                                    <outlet property="showImage" destination="ngJ-fa-EGH" id="a0W-B7-ScD"/>
+                                    <outlet property="showTitle" destination="xeB-sa-qIN" id="UdV-uI-bam"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
-                            <outlet property="dataSource" destination="nsD-U2-ZL9" id="ayp-3q-yCI"/>
-                            <outlet property="delegate" destination="nsD-U2-ZL9" id="XyY-Yh-I56"/>
+                            <outlet property="dataSource" destination="nsD-U2-ZL9" id="2dP-JK-EVb"/>
+                            <outlet property="delegate" destination="nsD-U2-ZL9" id="SzA-6e-93C"/>
                         </connections>
                     </collectionView>
                 </collectionViewController>
