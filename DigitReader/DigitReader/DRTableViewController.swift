@@ -32,18 +32,18 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        self.title = "Digit"
-        
         
         activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        view.addSubview(activityIndicator)
+        
         
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        
+        view.addSubview(activityIndicator)
         
         CoreDataManager.sharedInstance.getDigitFeedFromDatabase(success: { (feedItemsFromDB) in
             
@@ -53,16 +53,23 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
             
             self.tableView.reloadData()
             
+            activityIndicator.stopAnimating()
+            activityIndicator.hidesWhenStopped = true
+            
         }, failure: { (String) in
             
         })
         
         
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
         let url:URL = URL(string: "https://feeds.feedburner.com/digit/latest-news")!
         dparser = XMLParser(contentsOf: url)!
         dparser.delegate = self
         dparser.parse()
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -249,6 +256,7 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
     
     func parserDidStartDocument(_ parser: XMLParser) {
         activityIndicator.startAnimating()
+        showArts.removeAll()
     }
     
     func parserDidEndDocument(_ parser: XMLParser) {
