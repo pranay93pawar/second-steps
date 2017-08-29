@@ -19,6 +19,10 @@
 		9BA09E6D1F00033600C5976A /* UIImageView+Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA09E6C1F00033600C5976A /* UIImageView+Download.swift */; };
 		9BFB60AB1F01493A00523420 /* DigitReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BFB60A91F01493A00523420 /* DigitReader.xcdatamodeld */; };
 		9BFB60AD1F01520F00523420 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFB60AC1F01520F00523420 /* CoreDataManager.swift */; };
+		F99AACE31F5598B900A8AD1A /* TunesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99AACE21F5598B900A8AD1A /* TunesViewController.swift */; };
+		F9FAC4D11F516BA8009E3102 /* SegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FAC4D01F516BA8009E3102 /* SegmentViewController.swift */; };
+		F9FAC4D31F518D5C009E3102 /* DRCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FAC4D21F518D5C009E3102 /* DRCollectionViewController.swift */; };
+		F9FAC4D51F5196BB009E3102 /* DRCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FAC4D41F5196BB009E3102 /* DRCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,10 @@
 		9BA09E6C1F00033600C5976A /* UIImageView+Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Download.swift"; sourceTree = "<group>"; };
 		9BFB60AA1F01493A00523420 /* DigitReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DigitReader.xcdatamodel; sourceTree = "<group>"; };
 		9BFB60AC1F01520F00523420 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		F99AACE21F5598B900A8AD1A /* TunesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunesViewController.swift; sourceTree = "<group>"; };
+		F9FAC4D01F516BA8009E3102 /* SegmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentViewController.swift; sourceTree = "<group>"; };
+		F9FAC4D21F518D5C009E3102 /* DRCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRCollectionViewController.swift; sourceTree = "<group>"; };
+		F9FAC4D41F5196BB009E3102 /* DRCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,18 +97,16 @@
 		9B435C2D1EF8430A006430F9 /* DigitReader */ = {
 			isa = PBXGroup;
 			children = (
-				9B435C4E1EF84499006430F9 /* DRTableViewController.swift */,
+				F99AACE11F55985600A8AD1A /* Utils */,
+				F99AACE01F55982D00A8AD1A /* View */,
+				F99AACDF1F55982000A8AD1A /* Model */,
+				F99AACDE1F55980100A8AD1A /* Controller */,
 				9B435C2E1EF8430A006430F9 /* AppDelegate.swift */,
 				9B435C321EF8430A006430F9 /* Main.storyboard */,
 				9B435C351EF8430A006430F9 /* Assets.xcassets */,
 				9B435C371EF8430A006430F9 /* LaunchScreen.storyboard */,
 				9B435C3A1EF8430A006430F9 /* Info.plist */,
-				9B435C501EF849D1006430F9 /* ShowArt.swift */,
-				9B83C2CD1EF97D4400B940DB /* PostViewController.swift */,
-				9B896B551EFAC3550010CB09 /* DRTableViewCell.swift */,
-				9BA09E6C1F00033600C5976A /* UIImageView+Download.swift */,
 				9BFB60A91F01493A00523420 /* DigitReader.xcdatamodeld */,
-				9BFB60AC1F01520F00523420 /* CoreDataManager.swift */,
 			);
 			path = DigitReader;
 			sourceTree = "<group>";
@@ -112,6 +118,44 @@
 				9B435C451EF8430A006430F9 /* Info.plist */,
 			);
 			path = DigitReaderTests;
+			sourceTree = "<group>";
+		};
+		F99AACDE1F55980100A8AD1A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9B435C4E1EF84499006430F9 /* DRTableViewController.swift */,
+				F9FAC4D21F518D5C009E3102 /* DRCollectionViewController.swift */,
+				F9FAC4D01F516BA8009E3102 /* SegmentViewController.swift */,
+				9B83C2CD1EF97D4400B940DB /* PostViewController.swift */,
+				F99AACE21F5598B900A8AD1A /* TunesViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		F99AACDF1F55982000A8AD1A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9B435C501EF849D1006430F9 /* ShowArt.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F99AACE01F55982D00A8AD1A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9B896B551EFAC3550010CB09 /* DRTableViewCell.swift */,
+				F9FAC4D41F5196BB009E3102 /* DRCollectionViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F99AACE11F55985600A8AD1A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9BA09E6C1F00033600C5976A /* UIImageView+Download.swift */,
+				9BFB60AC1F01520F00523420 /* CoreDataManager.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,12 +263,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BA09E6D1F00033600C5976A /* UIImageView+Download.swift in Sources */,
+				F9FAC4D11F516BA8009E3102 /* SegmentViewController.swift in Sources */,
 				9B896B561EFAC3550010CB09 /* DRTableViewCell.swift in Sources */,
 				9B83C2CE1EF97D4400B940DB /* PostViewController.swift in Sources */,
+				F9FAC4D51F5196BB009E3102 /* DRCollectionViewCell.swift in Sources */,
 				9B435C511EF849D1006430F9 /* ShowArt.swift in Sources */,
 				9B435C2F1EF8430A006430F9 /* AppDelegate.swift in Sources */,
 				9BFB60AB1F01493A00523420 /* DigitReader.xcdatamodeld in Sources */,
 				9BFB60AD1F01520F00523420 /* CoreDataManager.swift in Sources */,
+				F9FAC4D31F518D5C009E3102 /* DRCollectionViewController.swift in Sources */,
+				F99AACE31F5598B900A8AD1A /* TunesViewController.swift in Sources */,
 				9B435C4F1EF84499006430F9 /* DRTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,6 +415,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = M65MBW7XAC;
 				INFOPLIST_FILE = DigitReader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pawar.DigitReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -382,6 +431,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = M65MBW7XAC;
 				INFOPLIST_FILE = DigitReader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pawar.DigitReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
