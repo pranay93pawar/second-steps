@@ -90,7 +90,6 @@
                                     <outlet property="showDate" destination="vwL-a9-zvq" id="JYR-uk-d61"/>
                                     <outlet property="showImage" destination="BA5-56-nnZ" id="AQs-Wh-Qka"/>
                                     <outlet property="showTitle" destination="L4J-Zk-Bq5" id="j9F-4a-w3b"/>
-                                    <segue destination="6eT-8I-qNq" kind="show" identifier="viewpost" id="JkQ-OJ-NFy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -215,7 +214,7 @@
         <!--Post View Controller-->
         <scene sceneID="oNG-U1-yHJ">
             <objects>
-                <viewController id="6eT-8I-qNq" customClass="PostViewController" customModule="DigitReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostViewController" id="6eT-8I-qNq" customClass="PostViewController" customModule="DigitReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j6U-Gx-A1j"/>
                         <viewControllerLayoutGuide type="bottom" id="uGL-nS-ZCH"/>
@@ -225,14 +224,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ww7-In-WDI">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="6eT-8I-qNq" id="emC-IX-66d"/>
                                 </connections>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="VUr-Ho-Tiw">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

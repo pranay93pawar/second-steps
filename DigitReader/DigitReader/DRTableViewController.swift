@@ -38,6 +38,7 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
         activityIndicator.hidesWhenStopped = true
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         
+        self.automaticallyAdjustsScrollViewInsets = false
         
     }
 
@@ -117,6 +118,20 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
     }
     
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let postViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostViewController") as! PostViewController
+        
+        let feedItem:FeedItem = feedItems[indexPath.row]
+        
+        
+        postViewController.showLink = feedItem.link!
+        postViewController.itemTitle = feedItem.title!
+        
+        self.navigationController?.pushViewController(postViewController, animated: true)
+        
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -156,7 +171,7 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
@@ -171,7 +186,7 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
             viewController.itemTitle = feedItem.title!
             
         }
-    }
+    }*/
     
 
     

@@ -73,7 +73,7 @@ class DRCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //let cell:DRCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DRCollectionViewCell
+
         let cell:DRCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DRCollectionViewCell
     
         cell.backgroundColor = UIColor.white
@@ -87,6 +87,20 @@ class DRCollectionViewController: UICollectionViewController {
         return cell
     }
 
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let postViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostViewController") as! PostViewController
+        
+        let feedItem:FeedItem = feedItems[indexPath.row]
+        
+        postViewController.showLink = feedItem.link!
+        postViewController.itemTitle = feedItem.title!
+        
+        self.navigationController?.pushViewController(postViewController, animated: true)
+        
+        
+    }
     
     // MARK: UICollectionViewDelegate
 

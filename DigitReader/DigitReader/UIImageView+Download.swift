@@ -23,7 +23,7 @@ extension UIImageView {
             return
         }
         
-        let url = URLRequest(url: URL(string: imgURL)!)
+        let url:URL = URL(string: imgURL)!
         
         if let imageToCache = imageCache.object(forKey: imgURL as NSString){
             
@@ -32,25 +32,23 @@ extension UIImageView {
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { (data,response, error) in
-            
-            if error !=  nil {
+        
+        let task = URLSession.shared.downloadTask(with: url, completionHandler: {(location, response, error) -> Void in
+        
+            if let data = try? Data(contentsOf: url) {
                 
-                print(error!)
-                
-                return
+                DispatchQueue.main.async {
+                    let imageToCache = UIImage(data: data)
+                    
+                    imageCache.setObject(imageToCache!, forKey: imgURL as NSString)
+                    
+                    self.image = imageToCache
+                    
+                    
+                }
             }
             
-            DispatchQueue.main.async {
-                let imageToCache = UIImage(data: data!)
-                
-                imageCache.setObject(imageToCache!, forKey: imgURL as NSString)
-                
-                self.image = imageToCache
-                
-                
-            }
-        }
+        })
 
         task.resume()
         

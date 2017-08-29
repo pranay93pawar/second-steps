@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         window?.tintColor = themeColor
+        
+        UINavigationBar.appearance().isTranslucent = true
+        
         return true
     }
 
