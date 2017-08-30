@@ -20,6 +20,9 @@
 		9BFB60AB1F01493A00523420 /* DigitReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BFB60A91F01493A00523420 /* DigitReader.xcdatamodeld */; };
 		9BFB60AD1F01520F00523420 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFB60AC1F01520F00523420 /* CoreDataManager.swift */; };
 		F99AACE31F5598B900A8AD1A /* TunesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99AACE21F5598B900A8AD1A /* TunesViewController.swift */; };
+		F9C8660B1F56B8E600A8A150 /* QueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8660A1F56B8E600A8A150 /* QueryService.swift */; };
+		F9C8660D1F56C84A00A8A150 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8660C1F56C84A00A8A150 /* Track.swift */; };
+		F9C8660F1F56D55500A8A150 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8660E1F56D55500A8A150 /* TrackTableViewCell.swift */; };
 		F9FAC4D11F516BA8009E3102 /* SegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FAC4D01F516BA8009E3102 /* SegmentViewController.swift */; };
 		F9FAC4D31F518D5C009E3102 /* DRCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FAC4D21F518D5C009E3102 /* DRCollectionViewController.swift */; };
 		F9FAC4D51F5196BB009E3102 /* DRCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FAC4D41F5196BB009E3102 /* DRCollectionViewCell.swift */; };
@@ -53,6 +56,9 @@
 		9BFB60AA1F01493A00523420 /* DigitReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DigitReader.xcdatamodel; sourceTree = "<group>"; };
 		9BFB60AC1F01520F00523420 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		F99AACE21F5598B900A8AD1A /* TunesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunesViewController.swift; sourceTree = "<group>"; };
+		F9C8660A1F56B8E600A8A150 /* QueryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryService.swift; sourceTree = "<group>"; };
+		F9C8660C1F56C84A00A8A150 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		F9C8660E1F56D55500A8A150 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		F9FAC4D01F516BA8009E3102 /* SegmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentViewController.swift; sourceTree = "<group>"; };
 		F9FAC4D21F518D5C009E3102 /* DRCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRCollectionViewController.swift; sourceTree = "<group>"; };
 		F9FAC4D41F5196BB009E3102 /* DRCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -97,6 +103,7 @@
 		9B435C2D1EF8430A006430F9 /* DigitReader */ = {
 			isa = PBXGroup;
 			children = (
+				F9C866091F56B8A000A8A150 /* NetWorking */,
 				F99AACE11F55985600A8AD1A /* Utils */,
 				F99AACE01F55982D00A8AD1A /* View */,
 				F99AACDF1F55982000A8AD1A /* Model */,
@@ -136,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				9B435C501EF849D1006430F9 /* ShowArt.swift */,
+				F9C8660C1F56C84A00A8A150 /* Track.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -145,6 +153,7 @@
 			children = (
 				9B896B551EFAC3550010CB09 /* DRTableViewCell.swift */,
 				F9FAC4D41F5196BB009E3102 /* DRCollectionViewCell.swift */,
+				F9C8660E1F56D55500A8A150 /* TrackTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -156,6 +165,14 @@
 				9BFB60AC1F01520F00523420 /* CoreDataManager.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		F9C866091F56B8A000A8A150 /* NetWorking */ = {
+			isa = PBXGroup;
+			children = (
+				F9C8660A1F56B8E600A8A150 /* QueryService.swift */,
+			);
+			name = NetWorking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9C8660B1F56B8E600A8A150 /* QueryService.swift in Sources */,
 				9BA09E6D1F00033600C5976A /* UIImageView+Download.swift in Sources */,
 				F9FAC4D11F516BA8009E3102 /* SegmentViewController.swift in Sources */,
 				9B896B561EFAC3550010CB09 /* DRTableViewCell.swift in Sources */,
@@ -271,9 +289,11 @@
 				9B435C2F1EF8430A006430F9 /* AppDelegate.swift in Sources */,
 				9BFB60AB1F01493A00523420 /* DigitReader.xcdatamodeld in Sources */,
 				9BFB60AD1F01520F00523420 /* CoreDataManager.swift in Sources */,
+				F9C8660F1F56D55500A8A150 /* TrackTableViewCell.swift in Sources */,
 				F9FAC4D31F518D5C009E3102 /* DRCollectionViewController.swift in Sources */,
 				F99AACE31F5598B900A8AD1A /* TunesViewController.swift in Sources */,
 				9B435C4F1EF84499006430F9 /* DRTableViewController.swift in Sources */,
+				F9C8660D1F56C84A00A8A150 /* Track.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

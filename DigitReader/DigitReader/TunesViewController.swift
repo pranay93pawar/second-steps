@@ -8,9 +8,14 @@
 
 import UIKit
 
-class TunesViewController: UIViewController,UISearchBarDelegate {
+class TunesViewController: UIViewController,UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tunesTableView: UITableView!
+    
+    let queryService = QueryService()
+    var searchResults : [Track] = []
+    
     lazy var tapRecognizer:UITapGestureRecognizer = {
         var recognizer = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
         return recognizer
@@ -34,7 +39,21 @@ class TunesViewController: UIViewController,UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-            print("Hello search")
+        dissmissKeyboard()
+        guard let searchText = searchBar.text,  !searchText.isEmpty else { return }
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        queryService.getSearchResults(searchTerm: searchText){ results , errorMessage in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            if let results = results {
+                self.searchResults = results
+                self.tunesTableView.reloadData()
+            }
+            
+            if !errorMessage.isEmpty {print("search error : \(errorMessage)")}
+            
+        }
+        
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -44,6 +63,28 @@ class TunesViewController: UIViewController,UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         view.removeGestureRecognizer(tapRecognizer)
     }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResults.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TrackTableViewCell", for: indexPath) as! TrackTableViewCell
+        
+        let track = searchResults[indexPath.row]
+        
+        cell.title.text = track.name
+        cell.artist.text = track.artist
+        
+        return cell;
+    }
+    
     
     /*
     // MARK: - Navigation
