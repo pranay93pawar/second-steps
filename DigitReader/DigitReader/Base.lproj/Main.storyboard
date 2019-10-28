@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YDj-WI-PiP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YDj-WI-PiP">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -108,10 +109,6 @@
         <scene sceneID="6eu-6z-Cim">
             <objects>
                 <viewController id="tG6-Cl-6sM" customClass="SegmentViewController" customModule="DigitReader" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Rum-ED-Qu8"/>
-                        <viewControllerLayoutGuide type="bottom" id="e49-gS-6z3"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Gs0-5A-JcS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,14 +129,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="vNe-IU-Ssr" secondAttribute="trailing" constant="25" id="0Ru-l4-a8v"/>
-                            <constraint firstItem="vNe-IU-Ssr" firstAttribute="leading" secondItem="Gs0-5A-JcS" secondAttribute="leading" constant="25" id="9b7-s3-gpK"/>
-                            <constraint firstItem="e49-gS-6z3" firstAttribute="top" secondItem="DLz-Ol-FRB" secondAttribute="bottom" id="BPE-kW-pHp"/>
-                            <constraint firstItem="vNe-IU-Ssr" firstAttribute="top" secondItem="Rum-ED-Qu8" secondAttribute="bottom" constant="15" id="Oc2-xL-5IP"/>
-                            <constraint firstAttribute="trailing" secondItem="DLz-Ol-FRB" secondAttribute="trailing" id="osh-HP-HZO"/>
+                            <constraint firstItem="rTZ-eh-Q1e" firstAttribute="trailing" secondItem="vNe-IU-Ssr" secondAttribute="trailing" constant="25" id="0Ru-l4-a8v"/>
+                            <constraint firstItem="vNe-IU-Ssr" firstAttribute="leading" secondItem="rTZ-eh-Q1e" secondAttribute="leading" constant="25" id="9b7-s3-gpK"/>
+                            <constraint firstItem="rTZ-eh-Q1e" firstAttribute="bottom" secondItem="DLz-Ol-FRB" secondAttribute="bottom" id="BPE-kW-pHp"/>
+                            <constraint firstItem="vNe-IU-Ssr" firstAttribute="top" secondItem="rTZ-eh-Q1e" secondAttribute="top" constant="15" id="Oc2-xL-5IP"/>
+                            <constraint firstItem="rTZ-eh-Q1e" firstAttribute="trailing" secondItem="DLz-Ol-FRB" secondAttribute="trailing" id="osh-HP-HZO"/>
                             <constraint firstItem="DLz-Ol-FRB" firstAttribute="top" secondItem="vNe-IU-Ssr" secondAttribute="bottom" constant="15" id="poO-Il-nlc"/>
-                            <constraint firstItem="DLz-Ol-FRB" firstAttribute="leading" secondItem="Gs0-5A-JcS" secondAttribute="leading" id="zOo-aW-TUv"/>
+                            <constraint firstItem="DLz-Ol-FRB" firstAttribute="leading" secondItem="rTZ-eh-Q1e" secondAttribute="leading" id="zOo-aW-TUv"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="rTZ-eh-Q1e"/>
                     </view>
                     <navigationItem key="navigationItem" id="HHO-pr-j7v"/>
                     <connections>
@@ -206,10 +204,6 @@
         <scene sceneID="oNG-U1-yHJ">
             <objects>
                 <viewController storyboardIdentifier="PostViewController" id="6eT-8I-qNq" customClass="PostViewController" customModule="DigitReader" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="j6U-Gx-A1j"/>
-                        <viewControllerLayoutGuide type="bottom" id="uGL-nS-ZCH"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="e1c-zT-X3n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -227,15 +221,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ww7-In-WDI" secondAttribute="trailing" id="9UZ-8S-vMM"/>
-                            <constraint firstItem="ww7-In-WDI" firstAttribute="top" secondItem="j6U-Gx-A1j" secondAttribute="bottom" id="Ry4-P3-TT5"/>
-                            <constraint firstAttribute="trailing" secondItem="VUr-Ho-Tiw" secondAttribute="trailing" id="aOz-hK-mla"/>
-                            <constraint firstItem="uGL-nS-ZCH" firstAttribute="top" secondItem="VUr-Ho-Tiw" secondAttribute="bottom" id="cgr-Rs-y2x"/>
-                            <constraint firstItem="VUr-Ho-Tiw" firstAttribute="leading" secondItem="e1c-zT-X3n" secondAttribute="leading" id="mRe-u5-JRP"/>
-                            <constraint firstItem="VUr-Ho-Tiw" firstAttribute="top" secondItem="j6U-Gx-A1j" secondAttribute="bottom" id="o72-f9-ztc"/>
-                            <constraint firstItem="uGL-nS-ZCH" firstAttribute="top" secondItem="ww7-In-WDI" secondAttribute="bottom" id="xx0-MP-fNp"/>
-                            <constraint firstItem="ww7-In-WDI" firstAttribute="leading" secondItem="e1c-zT-X3n" secondAttribute="leading" id="yXe-0l-DEO"/>
+                            <constraint firstItem="Apb-e4-y2w" firstAttribute="trailing" secondItem="ww7-In-WDI" secondAttribute="trailing" id="9UZ-8S-vMM"/>
+                            <constraint firstItem="ww7-In-WDI" firstAttribute="top" secondItem="Apb-e4-y2w" secondAttribute="top" id="Ry4-P3-TT5"/>
+                            <constraint firstItem="Apb-e4-y2w" firstAttribute="trailing" secondItem="VUr-Ho-Tiw" secondAttribute="trailing" id="aOz-hK-mla"/>
+                            <constraint firstItem="Apb-e4-y2w" firstAttribute="bottom" secondItem="VUr-Ho-Tiw" secondAttribute="bottom" id="cgr-Rs-y2x"/>
+                            <constraint firstItem="VUr-Ho-Tiw" firstAttribute="leading" secondItem="Apb-e4-y2w" secondAttribute="leading" id="mRe-u5-JRP"/>
+                            <constraint firstItem="VUr-Ho-Tiw" firstAttribute="top" secondItem="Apb-e4-y2w" secondAttribute="top" id="o72-f9-ztc"/>
+                            <constraint firstItem="Apb-e4-y2w" firstAttribute="bottom" secondItem="ww7-In-WDI" secondAttribute="bottom" id="xx0-MP-fNp"/>
+                            <constraint firstItem="ww7-In-WDI" firstAttribute="leading" secondItem="Apb-e4-y2w" secondAttribute="leading" id="yXe-0l-DEO"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Apb-e4-y2w"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="VUr-Ho-Tiw" id="GB6-vn-uIL"/>
@@ -250,10 +245,6 @@
         <scene sceneID="7yI-6h-yLd">
             <objects>
                 <viewController storyboardIdentifier="TunesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rSN-Hw-g35" customClass="TunesViewController" customModule="DigitReader" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8GX-lh-1c7"/>
-                        <viewControllerLayoutGuide type="bottom" id="Jzc-gp-jm6"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="D1R-QQ-GNf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -353,14 +344,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="g6f-kW-qle" firstAttribute="leading" secondItem="D1R-QQ-GNf" secondAttribute="leading" id="7SU-1o-2LB"/>
-                            <constraint firstAttribute="trailing" secondItem="g6f-kW-qle" secondAttribute="trailing" id="9cr-Vz-kdt"/>
-                            <constraint firstItem="kde-sQ-Cyp" firstAttribute="leading" secondItem="D1R-QQ-GNf" secondAttribute="leading" id="EkZ-0U-IYr"/>
+                            <constraint firstItem="g6f-kW-qle" firstAttribute="leading" secondItem="XZe-9i-X3f" secondAttribute="leading" id="7SU-1o-2LB"/>
+                            <constraint firstItem="XZe-9i-X3f" firstAttribute="trailing" secondItem="g6f-kW-qle" secondAttribute="trailing" id="9cr-Vz-kdt"/>
+                            <constraint firstItem="kde-sQ-Cyp" firstAttribute="leading" secondItem="XZe-9i-X3f" secondAttribute="leading" id="EkZ-0U-IYr"/>
                             <constraint firstItem="g6f-kW-qle" firstAttribute="top" secondItem="kde-sQ-Cyp" secondAttribute="bottom" id="VgK-yE-wix"/>
-                            <constraint firstAttribute="trailing" secondItem="kde-sQ-Cyp" secondAttribute="trailing" id="ZoN-a2-4Ci"/>
-                            <constraint firstItem="kde-sQ-Cyp" firstAttribute="top" secondItem="8GX-lh-1c7" secondAttribute="bottom" id="l5R-og-Sb1"/>
-                            <constraint firstItem="Jzc-gp-jm6" firstAttribute="top" secondItem="g6f-kW-qle" secondAttribute="bottom" id="yiM-eF-p3j"/>
+                            <constraint firstItem="XZe-9i-X3f" firstAttribute="trailing" secondItem="kde-sQ-Cyp" secondAttribute="trailing" id="ZoN-a2-4Ci"/>
+                            <constraint firstItem="kde-sQ-Cyp" firstAttribute="top" secondItem="XZe-9i-X3f" secondAttribute="top" id="l5R-og-Sb1"/>
+                            <constraint firstItem="XZe-9i-X3f" firstAttribute="bottom" secondItem="g6f-kW-qle" secondAttribute="bottom" id="yiM-eF-p3j"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="XZe-9i-X3f"/>
                     </view>
                     <navigationItem key="navigationItem" id="x9E-TI-JeH"/>
                     <connections>
@@ -393,6 +385,7 @@
                     <connections>
                         <segue destination="yKV-Vd-yz1" kind="relationship" relationship="viewControllers" id="C7l-FP-anW"/>
                         <segue destination="hTG-VD-34T" kind="relationship" relationship="viewControllers" id="cIP-Qz-n3f"/>
+                        <segue destination="fSA-4X-Xa8" kind="relationship" relationship="viewControllers" id="91L-zz-zIm"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WDD-gk-mwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -437,9 +430,92 @@
             </objects>
             <point key="canvasLocation" x="-63" y="986"/>
         </scene>
+        <!--Search Github-->
+        <scene sceneID="Rxl-qf-Ghx">
+            <objects>
+                <navigationController id="fSA-4X-Xa8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search Github" image="magnifyingglass" catalog="system" id="9gD-TS-7QF"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aQk-eJ-qCK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cnC-Wv-LL6" kind="relationship" relationship="rootViewController" id="GVa-xd-Elf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s9L-wp-0hX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-63" y="1850"/>
+        </scene>
+        <!--Search Git Hub View Controller-->
+        <scene sceneID="A2c-1c-RTd">
+            <objects>
+                <viewController storyboardIdentifier="SearchGitHubViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cnC-Wv-LL6" customClass="SearchGitHubViewController" customModule="DigitReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AjI-gX-69u">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search Repositories" translatesAutoresizingMaskIntoConstraints="NO" id="OD1-cH-g7P">
+                                <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ukc-qq-qTm">
+                                <rect key="frame" x="0.0" y="100" width="375" height="518"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="1kh-81-ccM" detailTextLabel="LOU-PU-56h" style="IBUITableViewCellStyleValue1" id="r48-7T-0wz">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r48-7T-0wz" id="jgo-Q3-Jjo">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1kh-81-ccM">
+                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LOU-PU-56h">
+                                                    <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ukc-qq-qTm" firstAttribute="leading" secondItem="y9l-qX-pAP" secondAttribute="leading" id="89e-yH-nc4"/>
+                            <constraint firstItem="OD1-cH-g7P" firstAttribute="top" secondItem="y9l-qX-pAP" secondAttribute="top" id="LfY-nW-ojn"/>
+                            <constraint firstItem="y9l-qX-pAP" firstAttribute="bottom" secondItem="ukc-qq-qTm" secondAttribute="bottom" id="Vfx-lz-wVj"/>
+                            <constraint firstItem="OD1-cH-g7P" firstAttribute="trailing" secondItem="y9l-qX-pAP" secondAttribute="trailing" id="WNr-rx-dG6"/>
+                            <constraint firstItem="y9l-qX-pAP" firstAttribute="trailing" secondItem="ukc-qq-qTm" secondAttribute="trailing" id="cIP-Ov-Kyj"/>
+                            <constraint firstItem="ukc-qq-qTm" firstAttribute="top" secondItem="OD1-cH-g7P" secondAttribute="bottom" id="pwp-Rh-H4t"/>
+                            <constraint firstItem="OD1-cH-g7P" firstAttribute="leading" secondItem="y9l-qX-pAP" secondAttribute="leading" id="ymc-vx-BgR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="y9l-qX-pAP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rht-3V-3gB"/>
+                    <connections>
+                        <outlet property="searchBar" destination="OD1-cH-g7P" id="QW5-kG-Hcz"/>
+                        <outlet property="tableview" destination="ukc-qq-qTm" id="lm6-w6-DZn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bKB-vs-6jj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="996" y="1850"/>
+        </scene>
     </scenes>
     <resources>
         <image name="event_selected" width="25" height="25"/>
         <image name="event_unselected" width="25" height="25"/>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
     </resources>
 </document>
