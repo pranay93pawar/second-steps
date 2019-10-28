@@ -106,12 +106,14 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
         
         let displayDate = dateFormatter.string(from: pubDate)
         
-        cell.showDate.text = displayDate.description
+        //cell.showDate.text = displayDate.description
+        cell.showDate.isHidden = true
         
-        let results = feedItem.author?.range(of: "\\((.*?)\\)",options: .regularExpression)
-        let showAuthor : String = feedItem.author!.substring(with: results!)
-        cell.showAuthor.text = " - " + showAuthor.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
+        //let results = feedItem.author?.range(of: "\\((.*?)\\)",options: .regularExpression)
+        //let showAuthor : String = feedItem.author!.substring(with: results!)
+        //cell.showAuthor.text = " - " + showAuthor.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
         
+        cell.showAuthor.text = displayDate.description
         cell.showImage.downloadImage(from: feedItem.imageURL!) 
         
         return cell
@@ -242,7 +244,7 @@ class DRTableViewController: UITableViewController,XMLParserDelegate {
                 
                 let dateFormatter = DateFormatter()
                 dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                dateFormatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
                 let dateString = data
                 
                 let date = dateFormatter.date(from: dateString)
