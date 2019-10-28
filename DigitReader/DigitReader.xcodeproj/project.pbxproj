@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16928AA52367205800E28F97 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 16928AA42367205800E28F97 /* RxSwift */; };
+		16928AA92367205800E28F97 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 16928AA82367205800E28F97 /* RxRelay */; };
+		16928AAB2367205800E28F97 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 16928AAA2367205800E28F97 /* RxCocoa */; };
+		16928AAD2367205800E28F97 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 16928AAC2367205800E28F97 /* RxBlocking */; };
 		9B435C2F1EF8430A006430F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B435C2E1EF8430A006430F9 /* AppDelegate.swift */; };
 		9B435C341EF8430A006430F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B435C321EF8430A006430F9 /* Main.storyboard */; };
 		9B435C361EF8430A006430F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B435C351EF8430A006430F9 /* Assets.xcassets */; };
@@ -69,6 +73,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16928AA92367205800E28F97 /* RxRelay in Frameworks */,
+				16928AAB2367205800E28F97 /* RxCocoa in Frameworks */,
+				16928AA52367205800E28F97 /* RxSwift in Frameworks */,
+				16928AAD2367205800E28F97 /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +199,12 @@
 			dependencies = (
 			);
 			name = DigitReader;
+			packageProductDependencies = (
+				16928AA42367205800E28F97 /* RxSwift */,
+				16928AA82367205800E28F97 /* RxRelay */,
+				16928AAA2367205800E28F97 /* RxCocoa */,
+				16928AAC2367205800E28F97 /* RxBlocking */,
+			);
 			productName = DigitReader;
 			productReference = 9B435C2B1EF8430A006430F9 /* DigitReader.app */;
 			productType = "com.apple.product-type.application";
@@ -245,6 +259,9 @@
 				Base,
 			);
 			mainGroup = 9B435C221EF8430A006430F9;
+			packageReferences = (
+				16928AA32367205800E28F97 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 9B435C2C1EF8430A006430F9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -424,7 +441,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -437,7 +455,10 @@
 				DEVELOPMENT_TEAM = M65MBW7XAC;
 				INFOPLIST_FILE = DigitReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pawar.DigitReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -453,7 +474,10 @@
 				DEVELOPMENT_TEAM = M65MBW7XAC;
 				INFOPLIST_FILE = DigitReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pawar.DigitReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -467,7 +491,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = DigitReaderTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pawar.DigitReaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -481,7 +509,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = DigitReaderTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pawar.DigitReaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -520,6 +552,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		16928AA32367205800E28F97 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		16928AA42367205800E28F97 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16928AA32367205800E28F97 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		16928AA82367205800E28F97 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16928AA32367205800E28F97 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		16928AAA2367205800E28F97 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16928AA32367205800E28F97 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		16928AAC2367205800E28F97 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16928AA32367205800E28F97 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		9BFB60A91F01493A00523420 /* DigitReader.xcdatamodeld */ = {
