@@ -17,12 +17,19 @@ class SearchGitHubViewController: UIViewController {
     
     let bag = DisposeBag()
     
+    var repoItems = BehaviorRelay<[Repo]>(value: [])
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "Search Github"
         
         self.bindUI()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.getDefaultItems()
     }
 
 }
@@ -30,7 +37,7 @@ class SearchGitHubViewController: UIViewController {
 extension SearchGitHubViewController {
     
     func bindUI() {
-        
+                
         searchBar.rx.text
             .orEmpty
             .filter { serachQuery in
@@ -49,25 +56,64 @@ extension SearchGitHubViewController {
             return URLSession.shared.rx.json(request: urlRequest)
                 .catchErrorJustReturn([])
             
-            }
-        .map { jsonResponse -> [Repo] in
-            
-            guard let json = jsonResponse as? [String:Any],
-                let items = json["items"] as? [[String:Any]] else {
-                    return []
-            }
-         
-            return items.compactMap(Repo.init)
-            
         }
-        .bind(to: tableview.rx.items) { tableview, row , repo in
+        .subscribe(onNext: { jsonResponse in
             
-            print("row: \(row) repo: \(repo)")
-            let cell = tableview.dequeueReusableCell(withIdentifier: "Cell")!
-            cell.textLabel?.text = repo.name
-            cell.detailTextLabel?.text = repo.language
-            return cell
+            if let json = jsonResponse as? [String:Any],
+                let items = json["items"] as? [[String:Any]] {
+                
+                self.repoItems.accept(items.compactMap(Repo.init))
+                
+            }else {
+                self.repoItems.accept([])
+            }
+            
+            
+            
+        }).disposed(by: bag)
+        
+        
+        self.searchBar.rx
+            .cancelButtonClicked
+            .subscribe(onNext: { [unowned self] in
+        
+                self.getDefaultItems()
+            })
+            .disposed(by: bag)
+        
+        self.repoItems
+            .asObservable()
+            .bind(to: tableview.rx.items) { tableview, row , repo in
+                
+                print("row: \(row) repo: \(repo)")
+                let cell = tableview.dequeueReusableCell(withIdentifier: "Cell")!
+                cell.textLabel?.text = repo.name
+                cell.detailTextLabel?.text = repo.language
+                return cell
         }
+        .disposed(by: bag)
     }
     
+    func getDefaultItems() {
+        
+        let uRLRequest = URLRequest(url: URL(string: "https://api.github.com/repositories")!)
+        
+        URLSession.shared.rx.json(request: uRLRequest)
+            .catchErrorJustReturn([])
+            .asObservable()
+            .subscribe(onNext: { jsonResponse in
+                
+                if let items = jsonResponse as? [[String:Any]] {
+                    print(items)
+                    self.repoItems.accept(items.compactMap(Repo.init))
+                    
+                }else {
+                    self.repoItems.accept([])
+                }
+                
+                print(self.repoItems.value)
+            })
+            .disposed(by: bag)
+        
+    }
 }

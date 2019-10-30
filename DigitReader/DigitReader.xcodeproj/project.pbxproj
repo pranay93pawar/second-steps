@@ -120,7 +120,6 @@
 				F99AACE01F55982D00A8AD1A /* View */,
 				F99AACDF1F55982000A8AD1A /* Model */,
 				F99AACDE1F55980100A8AD1A /* Controller */,
-				9B435C2E1EF8430A006430F9 /* AppDelegate.swift */,
 				9B435C321EF8430A006430F9 /* Main.storyboard */,
 				9B435C351EF8430A006430F9 /* Assets.xcassets */,
 				9B435C371EF8430A006430F9 /* LaunchScreen.storyboard */,
@@ -148,6 +147,7 @@
 				9B83C2CD1EF97D4400B940DB /* PostViewController.swift */,
 				F99AACE21F5598B900A8AD1A /* TunesViewController.swift */,
 				16928AAE23672E0300E28F97 /* SearchGitHubViewController.swift */,
+				9B435C2E1EF8430A006430F9 /* AppDelegate.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
