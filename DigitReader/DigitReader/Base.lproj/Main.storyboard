@@ -252,9 +252,6 @@
                             <searchBar contentMode="redraw" placeholder="Song name or artist" translatesAutoresizingMaskIntoConstraints="NO" id="kde-sQ-Cyp">
                                 <rect key="frame" x="0.0" y="44" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="rSN-Hw-g35" id="Jds-XB-Ice"/>
-                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g6f-kW-qle">
                                 <rect key="frame" x="0.0" y="100" width="375" height="518"/>
@@ -336,10 +333,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="rSN-Hw-g35" id="e1l-fT-oBm"/>
-                                    <outlet property="delegate" destination="rSN-Hw-g35" id="kZS-F8-j6S"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

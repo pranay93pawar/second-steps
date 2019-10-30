@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class TunesViewController: UIViewController,UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource {
+class TunesViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tunesTableView: UITableView!
@@ -16,84 +18,68 @@ class TunesViewController: UIViewController,UISearchBarDelegate,UITableViewDeleg
     let queryService = QueryService()
     var searchResults : [Track] = []
     
-    lazy var tapRecognizer:UITapGestureRecognizer = {
-        var recognizer = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
-        return recognizer
-    }()
+    let bag = DisposeBag()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "Downloads"
+        
+        self.bindUI()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+}
 
-    @objc func dissmissKeyboard(){
-        searchBar.resignFirstResponder()
-    }
+extension TunesViewController {
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        dissmissKeyboard()
-        guard let searchText = searchBar.text,  !searchText.isEmpty else { return }
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        queryService.getSearchResults(searchTerm: searchText){ results , errorMessage in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    
+    func bindUI() {
+        
+        self.searchBar.rx.text
+            .orEmpty
+            .filter { searchText in
+
+                return searchText.count > 2
+
+        }
+        .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+        .map { searchText in
+
+            var urlComponents = URLComponents(string: "https://itunes.apple.com/search")!
+            urlComponents.queryItems = [URLQueryItem(name: "media", value: "music"),
+                                        URLQueryItem(name: "entity", value: "song"),
+                                        URLQueryItem(name: "term", value: searchText)]
+
+            return URLRequest(url: urlComponents.url!)
+        }
+        .flatMapLatest { urlRequest in
             
-            if let results = results {
-                self.searchResults = results
-                self.tunesTableView.reloadData()
-            }
-            
-            if !errorMessage.isEmpty {print("search error : \(errorMessage)")}
+            return URLSession.shared.rx.json(request: urlRequest)
+                .catchErrorJustReturn([])
             
         }
-        
+        .map { jsonRespone -> ([Track]) in
+            
+            guard let json = jsonRespone as? [String: Any],
+                let results = json["results"] as? [[String: Any]] else {
+                    
+                    return []
+            }
+            
+            return results.compactMap(Track.init)
+            
+        }
+        .bind(to: tunesTableView.rx.items) { tableView, row, track in
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TrackTableViewCell") as! TrackTableViewCell
+                        
+            cell.title.text = track.name
+            cell.artist.text = track.artist
+            
+            return cell;
+            
+        }.disposed(by: bag)
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        view.addGestureRecognizer(tapRecognizer)
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        view.removeGestureRecognizer(tapRecognizer)
-    }
-    
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrackTableViewCell", for: indexPath) as! TrackTableViewCell
-        
-        let track = searchResults[indexPath.row]
-        
-        cell.title.text = track.name
-        cell.artist.text = track.artist
-        
-        return cell;
-    }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
