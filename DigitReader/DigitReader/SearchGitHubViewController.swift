@@ -27,10 +27,6 @@ class SearchGitHubViewController: UIViewController {
         self.bindUI()
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.getDefaultItems()
-    }
 
 }
 
@@ -41,6 +37,11 @@ extension SearchGitHubViewController {
         searchBar.rx.text
             .orEmpty
             .filter { serachQuery in
+                
+                if serachQuery.count == 0 {
+                    self.getDefaultItems()
+                }
+                
                 return serachQuery.count > 2
         }
         .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
@@ -71,15 +72,6 @@ extension SearchGitHubViewController {
             
             
         }).disposed(by: bag)
-        
-        
-        self.searchBar.rx
-            .cancelButtonClicked
-            .subscribe(onNext: { [unowned self] in
-        
-                self.getDefaultItems()
-            })
-            .disposed(by: bag)
         
         self.repoItems
             .asObservable()
